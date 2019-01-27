@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Restaurant;
 
 class RestaurantsController extends Controller
 {
@@ -13,7 +14,8 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        //
+      $restaurants = Restaurant::all();
+      return view('Restaurants.index')-> with('restaurants',$restaurants);
     }
 
     /**
@@ -23,7 +25,7 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Restaurants.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request,array(
+          'RestaurantName' =>'required',
+          'Address' =>'required',
+          'Capacity' =>'required',
+      ));
+      //create
+      $restaurants = new Restaurant;
+      $restaurants['RestaurantName'] = $request ->get('RestaurantName');
+      $restaurants['Address'] = $request ->get('Address');
+      $restaurants['Capacity'] = $request ->get('Capacity');
+      $restaurants->save();
+      return redirect('/restaurants');
     }
 
     /**
@@ -45,7 +58,8 @@ class RestaurantsController extends Controller
      */
     public function show($id)
     {
-        //
+      $restaurant = Restaurant::find($id);
+      return view('Restaurants.show', compact('restaurant' ,'id'));
     }
 
     /**
@@ -56,7 +70,8 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $restaurant = Restaurant::find($id);
+      return view('Restaurant.edit', compact('restaurant' ,'id'));
     }
 
     /**
@@ -68,7 +83,18 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,array(
+          'RestaurantName' =>'required',
+          'Address' =>'required',
+          'Capacity' =>'required'
+      ));
+      //create
+      $restaurants = new Restaurant;
+      $restaurants['RestaurantName'] = $request ->get('RestaurantName');
+      $restaurants['Address'] = $request ->get('Address');
+      $restaurants['Capacity'] = $request ->get('Capacity');
+      $rents->save();
+      return redirect('/restaurants');
     }
 
     /**

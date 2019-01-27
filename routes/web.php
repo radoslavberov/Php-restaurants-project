@@ -20,5 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/owners', 'OwnersController');
-Route::resource('/restaurants', 'RestaurantssController');
+Route::resource('/restaurants', 'RestaurantsController');
 Route::resource('/rents', 'RentsController');

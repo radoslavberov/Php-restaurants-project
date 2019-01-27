@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rent;
 
 class RentsController extends Controller
 {
@@ -13,7 +14,8 @@ class RentsController extends Controller
      */
     public function index()
     {
-        //
+      $rents = Rent::all();
+      return view('Rents.index')-> with('rents',$rents);
     }
 
     /**
@@ -23,7 +25,7 @@ class RentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Rents.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class RentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request,array(
+          'RestaurantName' =>'required',
+          'Price' =>'required',
+          'Available' =>'required',
+      ));
+      //create
+      $rents = new Rent;
+      $rents['RestaurantName'] = $request ->get('RestaurantName');
+      $rents['Price'] = $request ->get('Price');
+      $rents['Available'] = $request ->get('Available');
+      $rents->save();
+      return redirect('/rents');
     }
 
     /**
@@ -45,7 +58,8 @@ class RentsController extends Controller
      */
     public function show($id)
     {
-        //
+      $rent = Rent::find($id);
+      return view('Rents.show', compact('rent' ,'id'));
     }
 
     /**
@@ -56,7 +70,8 @@ class RentsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $rent = Rent::find($id);
+      return view('Rents.edit', compact('rent' ,'id'));
     }
 
     /**
@@ -68,7 +83,18 @@ class RentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,array(
+          'RestaurantName' =>'required',
+          'Price' =>'required',
+          'Available' =>'required'
+      ));
+      //create
+      $rents = new Rent;
+      $owners['RestaurantName'] = $request ->get('RestaurantName');
+      $rents['Price'] = $request ->get('Price');
+      $rents['Available'] = $request ->get('Available');
+      $rents->save();
+      return redirect('/rents');
     }
 
     /**
