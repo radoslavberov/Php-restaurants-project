@@ -59,6 +59,9 @@ class RestaurantsController extends Controller
     public function show($id)
     {
       $restaurant = Restaurant::find($id);
+      if(!$restaurant) {
+        abort(404); //Not found
+      }
       return view('Restaurants.show', compact('restaurant' ,'id'));
     }
 
