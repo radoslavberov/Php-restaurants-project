@@ -88,7 +88,7 @@ class OwnersController extends Controller
           'RestaurantName' =>'required',
       ));
       //create
-      $owners = new Owner;
+      $owners = Owner::find($id);
       $owners['Name'] = $request ->get('Name');
       $owners['RestaurantName'] = $request ->get('RestaurantName');
       $owners->save();
@@ -103,6 +103,7 @@ class OwnersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $owners = Owner::find($id);
+        $owners -> delete();
     }
 }

@@ -2,7 +2,7 @@
     {{csrf_field()}}
     <div class="form-group">
         {{csrf_field()}}
-        <label for="name">RestaurantName:</label>
+        <label for="RestaurantName">RestaurantName:</label>
         <input type="text" class="form-control" name="RestaurantName" id="restaurantname" />
     </div>
     <div class="form-group">

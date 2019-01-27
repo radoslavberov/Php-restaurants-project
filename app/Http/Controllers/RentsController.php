@@ -89,8 +89,8 @@ class RentsController extends Controller
           'Available' =>'required'
       ));
       //create
-      $rents = new Rent;
-      $owners['RestaurantName'] = $request ->get('RestaurantName');
+      $rents = Rent::find($id);
+      $rents['RestaurantName'] = $request ->get('RestaurantName');
       $rents['Price'] = $request ->get('Price');
       $rents['Available'] = $request ->get('Available');
       $rents->save();

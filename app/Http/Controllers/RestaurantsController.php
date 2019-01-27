@@ -71,7 +71,7 @@ class RestaurantsController extends Controller
     public function edit($id)
     {
       $restaurant = Restaurant::find($id);
-      return view('Restaurant.edit', compact('restaurant' ,'id'));
+      return view('Restaurants.edit', compact('restaurant' ,'id'));
     }
 
     /**
@@ -93,7 +93,7 @@ class RestaurantsController extends Controller
       $restaurants['RestaurantName'] = $request ->get('RestaurantName');
       $restaurants['Address'] = $request ->get('Address');
       $restaurants['Capacity'] = $request ->get('Capacity');
-      $rents->save();
+      $restaurants->save();
       return redirect('/restaurants');
     }
 
