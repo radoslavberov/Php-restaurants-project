@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('content')
 <table class="table table-dark">
     <tr>
         <th>RestaurantName</th>
