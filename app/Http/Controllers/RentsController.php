@@ -107,6 +107,6 @@ class RentsController extends Controller
     {
       $rents = Rent::find($id);
       $rents -> delete();
-      return redirect('/rents')->with('success','Owner has been deleted successfully');
+      return redirect('/rents')->with('success','Rent has been deleted successfully');
     }
 }

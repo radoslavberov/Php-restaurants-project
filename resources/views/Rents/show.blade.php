@@ -1,4 +1,4 @@
-<table>
+<table class="table table-dark">
     <tr>
         <th>RestaurantName</th>
         <th>Price</th>

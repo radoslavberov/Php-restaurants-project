@@ -110,6 +110,6 @@ class RestaurantsController extends Controller
     {
       $restaurants = Restaurant::find($id);
       $restaurants -> delete();
-      return redirect('/restaurants')->with('success','Owner has been deleted successfully');
+      return redirect('/restaurants')->with('success','Restaurant has been deleted successfully');
     }
 }

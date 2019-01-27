@@ -12,7 +12,7 @@
     {{ session()->get('success') }}
   </div><br />
   @endif
-  <table>
+  <table class="table table-dark">
     <tr>
       <th>RestaurantName</th>
       <th>Price</th>
@@ -28,7 +28,7 @@
           <form action="{{route('rents.destroy', $rent -> id)}}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" name="btm-btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
           </form>
         </td>
         <td>
