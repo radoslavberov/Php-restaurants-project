@@ -9,10 +9,10 @@
                 <td>{{$owner-> Name}}</td>
                 <td>{{$owner -> RestaurantName}}</td>
                 <td>
-                  <form class="" action="{{route('owners.destroy', $owner  -> id)}}" method="post">
+                  <form action="{{route('owners.destroy', $owner  -> id)}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" name="btm-btn-danger">Delete</button>
+                    <button type="submit" name="btn-btn-danger">Delete</button>
                   </form>
                 </td>
                 <td>

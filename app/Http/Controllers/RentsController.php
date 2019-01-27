@@ -105,6 +105,8 @@ class RentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $rents = Rent::find($id);
+      $rents -> delete();
+      return redirect('/rents')->with('success','Owner has been deleted successfully');
     }
 }

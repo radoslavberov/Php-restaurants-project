@@ -105,5 +105,6 @@ class OwnersController extends Controller
     {
         $owners = Owner::find($id);
         $owners -> delete();
+        return redirect('/owners')->with('success','Owner has been deleted successfully');
     }
 }

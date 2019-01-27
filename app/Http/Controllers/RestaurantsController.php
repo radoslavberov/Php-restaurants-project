@@ -105,6 +105,8 @@ class RestaurantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $restaurants = Restaurant::find($id);
+      $restaurants -> delete();
+      return redirect('/restaurants')->with('success','Owner has been deleted successfully');
     }
 }

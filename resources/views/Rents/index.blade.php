@@ -11,7 +11,13 @@
                 <td>{{$rent -> Price}}</td>
                 <td>{{$rent -> Available}}</td>
                 <td>
-
+                  <form action="{{route('rents.destroy', $rent -> id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" name="btm-btn-danger">Delete</button>
+                  </form>
+                </td>
+                <td>
                     <a class="btn btn-primary"  href="{{route('rents.show', $rent  -> id)}}" method="POST"> SHOW</a>
                     <a class="btn btn-primary"  href="{{route('rents.edit', $rent  -> id)}}" method="POST"> EDIT</a>
                 </td>
