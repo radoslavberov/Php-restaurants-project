@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<a class="btn btn-primary" href="/restaurants/create">Create</a>
 <style>
 .uper {
   margin-top: 40px;
