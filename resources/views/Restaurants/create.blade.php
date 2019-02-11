@@ -32,11 +32,20 @@
         <label for="Address">Address:</label>
         <input type="text" class="form-control" name="Address" id="address" />
       </div>
+      <label for="Owner_id">Owner:</label>
+      <select class="form-control m-bot15" name="Owner_id">
+        <label for="Owner_id">Owner:</label>
+        @foreach($owners as $owner)
+            <option value="{{ $owner->id }}">{{ $owner->Name }}</option>
+        @endforeach
+      </select>
+
       <div class="form-group">
         {{csrf_field()}}
         <label for="Capacity">Capacity:</label>
         <input type="text" class="form-control" name="Capacity" id="capacity" />
       </div>
+
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>

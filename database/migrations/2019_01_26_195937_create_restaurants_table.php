@@ -19,6 +19,9 @@ class CreateRestaurantsTable extends Migration
             $table->string('RestaurantName', '64');
             $table->string('Address', '64');
             $table->integer('Capacity');
+            $table->unsignedInteger('Owner_id');
+
+            $table->foreign('Owner_id')->references('id')->on('owners');
         });
     }
 

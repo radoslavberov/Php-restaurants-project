@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class OwnersController extends Controller
 {
+
+  public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,7 @@ class OwnersController extends Controller
      */
     public function index()
     {
-        $owners = Owner::all();
+        $owners = Owner::orderBy('created_at', 'desc')->paginate(5);
         return view('Owners.index')-> with('owners',$owners);
     }
 
@@ -105,6 +110,8 @@ class OwnersController extends Controller
     {
         $owners = Owner::find($id);
         $owners -> delete();
+
+
         return redirect('/owners')->with('success','Owner has been deleted successfully');
     }
 }

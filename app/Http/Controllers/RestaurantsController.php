@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Restaurant;
+use App\Owner;
 
 class RestaurantsController extends Controller
 {
+  public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +30,8 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        return view('Restaurants.create');
+        $owners = Owner::all();
+        return view('Restaurants.create', compact('owners'));
     }
 
     /**
@@ -40,12 +46,14 @@ class RestaurantsController extends Controller
           'RestaurantName' =>'required',
           'Address' =>'required',
           'Capacity' =>'required',
+          'Owner_id' => 'required'
       ));
       //create
       $restaurants = new Restaurant;
       $restaurants['RestaurantName'] = $request ->get('RestaurantName');
       $restaurants['Address'] = $request ->get('Address');
       $restaurants['Capacity'] = $request ->get('Capacity');
+      $restaurants['Owner_id'] = $request ->get('Owner_id');
       $restaurants->save();
       return redirect('/restaurants');
     }

@@ -19,6 +19,9 @@ class CreateRentsTable extends Migration
             $table->string('RestaurantName', '64');
             $table->integer('Price');
             $table->string('Available', '64');
+            $table->unsignedInteger('Restaurant_id');
+
+            $table->foreign('Restaurant_id')->references('id')->on('restaurants');
         });
     }
 

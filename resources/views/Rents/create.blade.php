@@ -24,19 +24,23 @@
       {{csrf_field()}}
       <div class="form-group">
         {{csrf_field()}}
-        <label for="RestaurantName">RestaurantName:</label>
-        <input type="text" class="form-control" name="RestaurantName" id="restaurantname" />
-      </div>
-      <div class="form-group">
-        {{csrf_field()}}
         <label for="Price">Price:</label>
         <input type="text" class="form-control" name="Price" id="price" />
       </div>
       <div class="form-group">
         {{csrf_field()}}
-        <label for="Available">Available:</label>
-        <input type="text" class="form-control" name="Available" id="Available" />
+        <p>Available:</p>
+          <input type="radio" id="yes" name="Available" value="Yes" checked>
+            <label for="yes">Yes</label>
+          <input type="radio" id="no" name="Available" value="No">
+            <label for="no">No</label>
       </div>
+      <select class="form-control m-bot15" name="Restaurant_id">
+        <label for="Restaurant_id">Restaurant:</label>
+        @foreach($restaurants as $restaurant)
+            <option value="{{ $restaurant->id }}">{{ $restaurant->RestaurantName }}</option>
+        @endforeach
+      </select>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>

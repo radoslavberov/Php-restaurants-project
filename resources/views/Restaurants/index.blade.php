@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-<a class="btn btn-primary" href="/restaurants/create">Create</a>
 <style>
 .uper {
   margin-top: 40px;
@@ -13,6 +12,7 @@
     {{ session()->get('success') }}
   </div><br />
   @endif
+  <a class="btn btn-primary" href="/restaurants/create">Create</a>
   <table class="table table-dark">
     <tr>
       <th>RestaurantName</th>
@@ -26,18 +26,24 @@
         <td>{{$restaurant -> Address}}</td>
         <td>{{$restaurant -> Capacity}}</td>
         <td>
+            @if(!Auth::guest())
           <form action="{{route('restaurants.destroy', $restaurant -> id)}}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger">DELETE</button>
+
           </form>
         </td>
         <td>
-          <a class="btn btn-primary"  href="{{route('restaurants.show', $restaurant  -> id)}}" method="POST"> SHOW</a>
           <a class="btn btn-primary"  href="{{route('restaurants.edit', $restaurant  -> id)}}" method="POST"> EDIT</a>
+          @endif
+        </td>
+        <td>
+          <a class="btn btn-primary"  href="{{route('restaurants.show', $restaurant  -> id)}}" method="POST"> SHOW</a>
         </td>
       </tr>
       @endforeach
     </form>
   </table>
 </div>
+@endsection
